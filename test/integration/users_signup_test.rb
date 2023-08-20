@@ -16,5 +16,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_select "h1", "Example User"
+    assert is_logged_in?
   end
 end
