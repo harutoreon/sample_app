@@ -50,11 +50,6 @@ gem "bootsnap", require: false
 
 gem "bootstrap-sass"
 gem "sass-rails"
-gem "jquery-rails"
-
-gem 'uglifier'
-gem 'jbuilder'
-gem 'coffee-rails'
 gem 'turbolinks'
 
 group :development, :test do
