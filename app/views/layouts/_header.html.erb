@@ -1,3 +1,6 @@
+<!-- 23行目のコードはルーティングエラーになる。
+GUI でログアウト操作する時はコメントアウトして 22行目の コードを使うこと -->
+
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <%= link_to "sample app", root_path, id: "logo" %>
@@ -16,7 +19,8 @@
               <li><%= link_to "Settings", '#' %></li>
               <li class="divider"></li>
               <li>
-                <%= button_to "Log out", logout_path, method: :delete %>
+                <%#= button_to "Log out", logout_path, method: :delete %>
+                <%= link_to "Log out", logout_path, method: :delete %>
               </li>
             </ul>
           </li>
