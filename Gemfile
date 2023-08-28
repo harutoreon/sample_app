@@ -51,6 +51,7 @@ gem "bootsnap", require: false
 gem "bootstrap-sass"
 gem "sass-rails"
 gem 'turbolinks'
+gem 'faker'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
