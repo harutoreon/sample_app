@@ -51,6 +51,9 @@ gem "bootsnap", require: false
 gem "bootstrap-sass"
 gem "sass-rails"
 gem 'turbolinks'
+gem 'faker'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
