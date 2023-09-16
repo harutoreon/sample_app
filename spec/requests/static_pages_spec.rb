@@ -10,7 +10,7 @@ RSpec.describe "StaticPages", type: :request do
     end
     it 'response.body return Ruby on Rails Tutorial Sample App' do
       get root_path
-      expect(response.body).to include "#{base_title}"
+      expect(response.body).to include "<title>#{base_title}</title>"
     end
   end
 
@@ -21,7 +21,7 @@ RSpec.describe "StaticPages", type: :request do
     end
     it 'response.body return Ruby on Rails Tutorial Sample App' do
       get help_path
-      expect(response.body).to include "#{base_title}"
+      expect(response.body).to include "<title>Help | #{base_title}</title>"
     end
   end
   
@@ -32,7 +32,7 @@ RSpec.describe "StaticPages", type: :request do
     end
     it 'response.body return Ruby on Rails Tutorial Sample App' do
       get about_path
-      expect(response.body).to include "#{base_title}"
+      expect(response.body).to include "<title>About | #{base_title}</title>"
     end
   end
 
@@ -43,7 +43,7 @@ RSpec.describe "StaticPages", type: :request do
     end
     it 'response.body return Ruby on Rails Tutorial Sample App' do
       get contact_path
-      expect(response.body).to include "#{base_title}"
+      expect(response.body).to include "<title>Contact | #{base_title}</title>"
     end
   end
 end
