@@ -48,4 +48,11 @@ RSpec.describe User, type: :model do
     duplicate_user.email = user.email.upcase
     expect(duplicate_user).to_not be_valid
   end
+
+  it 'のemailは、小文字でデータベースに登録されていること' do
+    mixed_case_email = 'Foo@ExAMPle.CoM'
+    user.email = mixed_case_email
+    user.save
+    expect(user.reload.email).to eq(mixed_case_email.downcase)
+  end
 end
