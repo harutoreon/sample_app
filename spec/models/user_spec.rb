@@ -3,27 +3,43 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:user) { FactoryBot.create(:user) }
 
-  it 'userが有効であること' do
+  it 'は有効であること' do
     expect(user).to be_valid
   end
 
-  it 'nameが必須であること' do
+  it 'のnameは必須であること' do
     user.name = ''
     expect(user).to_not be_valid
   end
 
-  it 'emailが必須であること' do
+  it 'のemailは必須であること' do
     user.email = ''
     expect(user).to_not be_valid
   end
 
-  it 'nameは50文字以内であること' do
+  it 'のnameは50文字以内であること' do
     user.name = 'a' * 51
     expect(user).to_not be_valid
   end
 
-  it 'emailは255文字以内であること' do
+  it 'のemailは255文字以内であること' do
     user.email = 'a' * 244 + "@example.com"
     expect(user).to_not be_valid
+  end
+
+  it 'のemailは有効な形式であること' do
+    valid_addresses = %w[user@exmple.com USER@foo.COM A_US-ER@foo.bar.org first.last@foo.jp alice+bob@baz.cn]
+    valid_addresses.each do |valid_address|
+      user.email = valid_address
+      expect(user).to be_valid
+    end
+  end
+
+  it 'のemailが無効な形式であること' do
+    invalid_addresses = %w[user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com]
+    invalid_addresses.each do |invalid_address|
+      user.email = invalid_address
+      expect(user).to_not be_valid
+    end
   end
 end
