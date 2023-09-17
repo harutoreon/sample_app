@@ -6,9 +6,23 @@ jobs:
       - image: cimg/ruby:3.1.0
     steps:
       - checkout
+      - restore_cache:
+          name: restore Gems
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
       - run:
-          command: bundle install
+          name: install Gems
+          command: |
+            bundle config set path 'vendor/bundle' && \
+            bundle install
+      - save_cache:
+          name: save Gems
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run:
+          name: execute RSpec
           command: bundle exec rspec
 
 workflows:
