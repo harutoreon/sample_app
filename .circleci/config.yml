@@ -22,6 +22,9 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run:
+          name: execute RuboCop
+          command: bundle exec rubocop
+      - run:
           name: execute RSpec
           command: bundle exec rspec
 
