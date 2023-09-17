@@ -55,4 +55,14 @@ RSpec.describe User, type: :model do
     user.save
     expect(user.reload.email).to eq(mixed_case_email.downcase)
   end
+
+  it 'のpasswordは、必須であること' do
+    user.password = user.password_confirmation = ' ' * 6
+    expect(user).to_not be_valid
+  end
+  
+  it 'のpasswordは、6文字以上であること' do
+    user.password = user.password_confirmation = 'a' * 5
+    expect(user).to_not be_valid
+  end
 end
