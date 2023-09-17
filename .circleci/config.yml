@@ -7,21 +7,22 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          name: restore Gems
+          name: gem の復元
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             - v1-dependencies-
       - run:
-          name: bundle install
+          name: gem のインストール
           command: |
             bundle config set path 'vendor/bundle' && \
             bundle install
       - save_cache:
-          name: save Gems
+          name: gem の保存
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run:
+          name: RSpecの実行
           command: bundle exec rspec
 
 workflows:
