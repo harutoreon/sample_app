@@ -11,4 +11,9 @@ RSpec.describe User, type: :model do
     user.name = ''
     expect(user).to_not be_valid
   end
+
+  it 'emailが必須であること' do
+    user.email = ''
+    expect(user).to_not be_valid
+  end
 end
