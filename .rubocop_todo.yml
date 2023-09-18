@@ -375,3 +375,6 @@ Style/BlockDelimiters:
 Layout/MultilineBlockLayout:
   Enabled:
     - spec/requests/users_spec.rb
+
+Layout/BlockEndNewline:
+  Enabled: false
