@@ -214,3 +214,9 @@ Layout/LineLength:
 
 Style/MutableConstant:
   Enabled: false
+
+Gemspec/DeprecatedAttributeAssignment:
+  Enabled: true
+
+Gemspec/DevelopmentDependencies:
+  Enabled: true
