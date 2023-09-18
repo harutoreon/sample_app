@@ -369,7 +369,9 @@ Layout/LineLength:
   Max: 198
 
 Style/BlockDelimiters:
-  Enabled: false
+  Enabled:
+    - spec/requests/users_spec.rb
 
 Layout/MultilineBlockLayout:
-  Enabled: false
+  Enabled:
+    - spec/requests/users_spec.rb
