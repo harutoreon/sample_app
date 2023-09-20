@@ -19,8 +19,8 @@ GUI でログアウト操作する時はコメントアウトして 22行目の 
               <li><%= link_to "Settings", edit_user_path(current_user) %></li>
               <li class="divider"></li>
               <li>
-                <%#= button_to "Log out", logout_path, method: :delete %>
-                <%= link_to "Log out", logout_path, method: :delete %>
+                <%= button_to "Log out", logout_path, method: :delete %>
+                <%#= link_to "Log out", logout_path, method: :delete %>
               </li>
             </ul>
           </li>
