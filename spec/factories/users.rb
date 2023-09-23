@@ -5,6 +5,8 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
     admin { true }  # list 10.60
+    activated { true }
+    activated_at { Time.zone.now }
   end
 
   # list 10.47
