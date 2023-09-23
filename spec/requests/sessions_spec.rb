@@ -13,9 +13,7 @@ RSpec.describe "Sessions", type: :request do
       user = FactoryBot.create(:user)
       post login_path, params: { session: { email: user.email,
                                             password: user.password } }
-      pending 'この先はなぜかテストが失敗するのであとで直す'
       expect(logged_in?).to be_truthy
- 
       delete logout_path
       expect(logged_in?).to_not be_truthy
     end
