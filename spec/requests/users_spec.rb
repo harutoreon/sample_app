@@ -208,8 +208,18 @@ RSpec.describe "Users", type: :request do
 
   describe 'DELETE /users/{id}' do
     let!(:user) { FactoryBot.create(:user) }
-    let(:other_user) { FactoryBot.create(:archer) }
-   
+    # let(:other_user) { FactoryBot.create(:archer) }
+    let!(:other_user) { FactoryBot.create(:archer) }
+
+    context 'adminユーザでログイン済みの場合' do
+      it '削除できること' do
+        log_in user
+        expect {
+          delete user_path(other_user)
+        }.to change(User, :count).by -1
+      end
+    end
+    
     context '未ログインの場合' do
       it '削除できないこと' do
         expect {
