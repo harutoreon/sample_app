@@ -151,7 +151,7 @@ Metrics/AbcSize:
 # Configuration parameters: CountComments, CountAsOne, AllowedMethods, AllowedPatterns.
 # AllowedMethods: refine
 Metrics/BlockLength:
-  Max: 77
+  Max: 300
 
 # Offense count: 1
 # Configuration parameters: AllowedMethods, AllowedPatterns.
@@ -378,3 +378,7 @@ Layout/MultilineBlockLayout:
 
 Layout/BlockEndNewline:
   Enabled: false
+
+Lint/AmbiguousOperator:
+  Enabled:
+    - spec/requests/users_spec.rb
