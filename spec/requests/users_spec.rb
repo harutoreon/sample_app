@@ -49,6 +49,28 @@ RSpec.describe "Users", type: :request do
     end
   end
 
+  describe 'get /users/{id}/edit' do
+    let(:user) { FactoryBot.create(:user) }
+   
+    it 'タイトルがEdit user | Ruby on Rails Tutorial Sample Appであること' do
+      log_in user
+      get edit_user_path(user)
+      expect(response.body).to include full_title('Edit user')
+    end
+   
+    context '未ログインの場合' do
+      it 'flashが空でないこと' do
+        get edit_user_path(user)
+        expect(flash).to_not be_empty
+      end
+   
+      it '未ログインユーザはログインページにリダイレクトされること' do
+        get edit_user_path(user)
+        expect(response).to redirect_to login_path
+      end
+    end
+  end
+
   describe 'PATCH /users' do
     let(:user) { FactoryBot.create(:user) }
     
@@ -101,6 +123,18 @@ RSpec.describe "Users", type: :request do
    
       it 'flashが表示されていること' do
         expect(flash).to be_any
+      end
+    end
+
+    context '未ログインの場合' do
+      it 'flashが空でないこと' do
+        patch user_path(user), params: { user: { name: user.name, email: user.email } }
+        expect(flash).to_not be_empty
+      end
+    
+      it '未ログインユーザはログインページにリダイレクトされること' do
+        patch user_path(user), params: { user: { name: user.name, email: user.email } }
+        expect(response).to redirect_to login_path
       end
     end
   end
