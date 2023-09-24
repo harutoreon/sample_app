@@ -9,6 +9,15 @@ FactoryBot.define do
     activated_at { Time.zone.now }
   end
 
+  factory :archer, class: User do
+    name { 'Sterling Archer' }
+    email { 'duchess@example.gov' }
+    password { 'password' }
+    password_confirmation { 'password' }
+    activated { true }
+    activated_at { Time.zone.now }
+  end
+
   # list 10.47
   factory :continuous_users, class: User do
     sequence(:name) { |n| "User #{n}" }

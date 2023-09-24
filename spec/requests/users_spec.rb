@@ -69,6 +69,22 @@ RSpec.describe "Users", type: :request do
         expect(response).to redirect_to login_path
       end
     end
+
+    context '別のユーザの場合' do
+      let(:other_user) { FactoryBot.create(:archer) }
+     
+      it 'flashが空であること' do
+        log_in user
+        get edit_user_path(other_user)
+        expect(flash).to be_empty
+      end
+     
+      it 'root_pathにリダイレクトされること' do
+        log_in user
+        get edit_user_path(other_user)
+        expect(response).to redirect_to root_path
+      end
+    end   
   end
 
   describe 'PATCH /users' do
@@ -135,6 +151,23 @@ RSpec.describe "Users", type: :request do
       it '未ログインユーザはログインページにリダイレクトされること' do
         patch user_path(user), params: { user: { name: user.name, email: user.email } }
         expect(response).to redirect_to login_path
+      end
+    end
+
+    context '別のユーザの場合' do
+      let(:other_user) { FactoryBot.create(:archer) }
+       
+      before do
+        log_in user
+        patch user_path(other_user), params: { user: { name: other_user.name, email: other_user.email } }
+      end
+     
+      it 'flashが空であること' do
+        expect(flash).to be_empty
+      end
+     
+      it 'rootにリダイレクトすること' do
+        expect(response).to redirect_to root_path
       end
     end
   end
