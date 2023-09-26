@@ -2,7 +2,7 @@ require 'rails_helper'
  
 RSpec.describe Micropost, type: :model do
   let(:user) { FactoryBot.create(:user) }
-  let(:micropost) { Micropost.new(content: 'Lorem ipsum', user_id: user.id) }
+  let(:micropost) { user.microposts.build(content: 'Lorem ipsum') }
 
   it 'は、有効であること' do
     expect(micropost).to be_valid
