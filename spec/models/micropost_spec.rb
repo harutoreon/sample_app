@@ -12,4 +12,16 @@ RSpec.describe Micropost, type: :model do
     micropost.user_id = nil
     expect(micropost).to_not be_valid
   end
+
+  describe 'content' do
+    it 'が空なら、無効であること' do
+      micropost.content = '    '
+      expect(micropost).to_not be_valid
+    end
+   
+    it 'が141文字以上なら、無効であること' do
+      micropost.content = 'a' * 141
+      expect(micropost).to_not be_valid
+    end
+  end
 end
