@@ -19,6 +19,14 @@ RSpec.describe Micropost, type: :model do
     expect(FactoryBot.create(:cat_video)).to eq Micropost.last
   end
 
+  it '投稿したユーザが削除された場合、そのユーザのMicropostも削除されること' do
+    post = FactoryBot.create(:most_recent)
+    user = post.user    
+    expect {
+      user.destroy
+    }.to change(Micropost, :count).by -1
+  end
+
   describe 'content' do
     it 'が空なら、無効であること' do
       micropost.content = '    '
