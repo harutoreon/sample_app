@@ -269,6 +269,7 @@ Style/HashSyntax:
     - 'test/integration/microposts_interface_test.rb'
     - 'test/integration/users_edit_test.rb'
     - 'test/test_helper.rb'
+    - 'spec/factories/microposts.rb'
 
 # Offense count: 5
 # This cop supports safe autocorrection (--autocorrect).
