@@ -127,4 +127,12 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'Alice' do
+    let(:alice) { FactoryBot.build(:alice) }
+    
+    it 'は、有効であること' do
+      expect(alice).to be_valid
+    end
+  end
 end
