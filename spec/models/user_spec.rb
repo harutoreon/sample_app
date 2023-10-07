@@ -139,5 +139,10 @@ RSpec.describe User, type: :model do
       alice.name = ''
       expect(alice).to_not be_valid 
     end
+
+    it 'のemail属性は、有効であること' do
+      alice.email = ''
+      expect(alice).to_not be_valid
+    end
   end
 end
