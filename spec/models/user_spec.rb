@@ -127,4 +127,32 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'Alice' do
+    let(:alice) { FactoryBot.build(:alice) }
+    
+    it 'は、有効であること' do
+      expect(alice).to be_valid
+    end
+
+    it 'のname属性は、有効であること' do
+      alice.name = ''
+      expect(alice).to_not be_valid 
+    end
+
+    it 'のemail属性は、有効であること' do
+      alice.email = ''
+      expect(alice).to_not be_valid
+    end
+
+    it 'のnameは、50文字以内であること' do
+      alice.name = 'a' * 51
+      expect(alice).to_not be_valid
+    end
+
+    it 'のemailは、255文字以内であること' do
+      alice.email = 'a' * 244 + '@example.com'
+      expect(alice).to_not be_valid
+    end
+  end
 end
