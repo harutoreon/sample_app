@@ -19,6 +19,17 @@
         <%= render @microposts %>
       </ol>
       <%= will_paginate @microposts, renderer: BootstrapPagination::Rails %>
+      <%= will_paginate @microposts, previous_label: '前ページ', next_label: '次ページ' %>
     <% end %>
-  </div>  
+  </div>
+  <ul>
+    <li><%= "current_page: #{@microposts.current_page}" %></li>
+    <li><%= "per_page: #{@microposts.per_page}" %></li>
+    <li><%= "total_entries: #{@microposts.total_entries}" %></li>
+    <li><%= "total_pages: #{@microposts.total_pages}" %></li>
+    <li><%= "previous_page: #{@microposts.previous_page}" %></li>
+    <li><%= "next_page: #{@microposts.next_page}" %></li>
+    <li><%= "offset: #{@microposts.offset}" %></li>
+    <li><%= "out_of_bounds?: #{@microposts.out_of_bounds?}" %></li>
+  </ul>
 </div>
